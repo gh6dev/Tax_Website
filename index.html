@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">TaxManager</div>
+            <ul class="nav-links">
+                <li class="active"><a href="index.html"><i class="icon">📊</i>Dashboard</a></li>
+                <li><a href="index3.html"><i class="icon">👥</i>Taxpayers</a></li>
+                <li><a href="#"><i class="icon">📝</i>Returns</a></li>
+                <li><a href="#"><i class="icon">📁</i>Documents</a></li>
+                <li><a href="#"><i class="icon">⚙️</i>Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search taxpayers...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <button class="add-new-btn" onclick="showAddForm()">+ Add New Taxpayer</button>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="card stats">
+                    <h3>Quick Stats</h3>
+                    <div class="stat-items">
+                        <div class="stat-item">
+                            <span class="stat-number">1,234</span>
+                            <span class="stat-label">Total Taxpayers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">856</span>
+                            <span class="stat-label">Filed Returns</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">378</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card taxpayers">
+                    <h3>Pending Taxpayers</h3>
+                    <div class="taxpayer-item">
+                        <div class="taxpayer-info">
+                            <div class="taxpayer-name">Felix</div>
+                            <div class="taxpayer-details">
+                                NIN: XXX-XX-5677 | Status: Pending
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card taxpayers">
+                    <h3>Recent Taxpayers</h3>
+                    <div id="taxpayersList" class="taxpayers-list">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <button onclick="showAddForm()">Add New Taxpayer</button>
+                <button onclick="generateReport()">Generate Report</button>
+                <button onclick="showDeadlines()">View Deadlines</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Add Taxpayer Modal -->
+    <div id="addTaxpayerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAddForm()">&times;</span>
+            <h2>Add New Taxpayer</h2>
+            <form id="taxpayerForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="nin">NIN</label>
+                    <input type="text" id="nin" required pattern="\d{3}-\d{2}-\d{4}" placeholder="XXX-XX-XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">Add Taxpayer</button>
+                    <button type="button" onclick="closeAddForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Taxpayer Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfile()">&times;</span>
+            <div id="profileContent">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+:root {
+    --primary-color: #0077C5;
+    --secondary-color: #6B6C72;
+    --background-color: #F4F5F8;
+    --card-background: #FFFFFF;
+    --border-color: #E5E5E5;
+    --text-primary: #393A3D;
+    --text-secondary: #6B6C72;
+    --success-color: #2CA01C;
+    --error-color: #D52B1E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-bottom: 1rem;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.nav-links .active a,
+.nav-links a:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+.icon {
+    margin-right: 0.75rem;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 0.5rem;
+    width: 400px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    outline: none;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.add-new-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.add-new-btn:hover {
+    opacity: 0.9;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stats .stat-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Taxpayers List */
+.taxpayers-list {
+    margin-top: 1rem;
+}
+
+.taxpayer-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.taxpayer-item:hover {
+    background-color: var(--background-color);
+}
+
+.taxpayer-info {
+    flex: 1;
+}
+
+.taxpayer-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.taxpayer-details {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Quick Actions Sidebar */
+.quick-actions {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-left: 1px solid var(--border-color);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.action-buttons button {
+    background-color: var(--background-color);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+    background-color: var(--border-color);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--card-background);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.form-buttons button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.form-buttons button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.form-buttons button[type="button"] {
+    background-color: var(--background-color);
+    border: none;
+    color: var(--text-primary);
+}
+
+/* Letter Groups */
+.letter-group {
+    margin-bottom: 2rem;
+}
+
+.letter-header {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Enhanced Profile Styles */
+.profile-sections {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.profile-section {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.profile-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.profile-section h4 {
+    color: var(--text-primary);
+    margin: 1rem 0 0.5rem;
+    font-size: 1rem;
+}
+
+.profile-details ul {
+    list-style: none;
+    margin-left: 1rem;
+}
+
+.profile-details li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+/* Payment History Table */
+.payment-history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.payment-history th,
+.payment-history td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.payment-history th {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-badge.paid {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-badge.pending {
+    background-color: #FFF3E0;
+    color: #EF6C00;
+}
+
+.status-badge.late {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+/* Profile Actions */
+.profile-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.profile-actions button {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.docs-btn {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+.report-btn {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.delete-btn {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.profile-actions button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}

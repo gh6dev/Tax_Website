@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxpayer Dashboard</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">Tax Manager</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="index3.html" class="active">Taxpayers</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search taxpayers...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <button class="add-new-btn" onclick="showAddForm()">+ Add New</button>
+            </header>
+            
+            <div class="dashboard-grid">
+                <section class="taxpayers-list" id="taxpayersList">
+                    <!-- Taxpayers will be rendered here -->
+                </section>
+            </div>
+        </main>
+        
+        <aside class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                <button onclick="generateReport()">Generate Report</button>
+                <button onclick="showDeadlines()">View Deadlines</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Add Taxpayer Modal -->
+    <div id="addTaxpayerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAddForm()">&times;</span>
+            <h2>Add New Taxpayer</h2>
+            <form id="taxpayerForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="nin">NIN</label>
+                    <input type="text" id="nin" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">Add</button>
+                    <button type="button" onclick="closeAddForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfile()">&times;</span>
+            <div id="profileContent"></div>
+        </div>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
