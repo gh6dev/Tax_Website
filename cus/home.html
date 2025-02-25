@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Tax Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --primary-light: #e6f0ff;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background-color: #f9fafb;
+            --card-background: white;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background-color: var(--card-background);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .status {
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        .status-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .status-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .card-content {
+            font-size: 0.875rem;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .action-button:hover {
+            background-color: #004ab8;
+        }
+
+        .tax-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tax-item {
+            background-color: var(--primary-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tax-item-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tax-item-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .document-list {
+            list-style-type: none;
+        }
+
+        .document-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .document-list li:last-child {
+            border-bottom: none;
+        }
+
+        .payment-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        input, select {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #004ab8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Tax Portal</div>
+                <div class="user-menu">
+                    <span class="user-name">John Doe</span>
+                    <a href="#" class="action-button">Log Out</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Welcome back, John!</h1>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">2024 Tax Return</h2>
+                        <span class="status status-warning">In Progress</span>
+                    </div>
+                    <div class="card-content">
+                        <p>You've completed 3 out of 5 sections.</p>
+                        <a href="#" class="action-button">Continue Filing</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Tax Summary</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="tax-summary">
+                            <div class="tax-item">
+                                <div class="tax-item-label">Total Income</div>
+                                <div class="tax-item-value">$75,000</div>
+                            </div>
+                            <div class="tax-item">
+                                <div class="tax-item-label">Deductions</div>
+                                <div class="tax-item-value">$12,550</div>
+                            </div>
+                            <div class="tax-item">
+                                <div class="tax-item-label">Tax Owed</div>
+                                <div class="tax-item-value">$8,200</div>
+                            </div>
+                            <div class="tax-item">
+                                <div class="tax-item-label">Refund Amount</div>
+                                <div class="tax-item-value">$1,500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Important Dates</h2>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Tax Filing Deadline:</strong> April 15, 2025</p>
+                        <p><strong>Estimated Tax Payment Due:</strong> June 15, 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Documents</h2>
+                    </div>
+                    <div class="card-content">
+                        <ul class="document-list">
+                            <li>
+                                <span>W-2 (2024)</span>
+                                <a href="#" class="action-button">View</a>
+                            </li>
+                            <li>
+                                <span>1099-INT (2024)</span>
+                                <a href="#" class="action-button">View</a>
+                            </li>
+                            <li>
+                                <span>Previous Year Return (2023)</span>
+                                <a href="#" class="action-button">View</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Make a Payment</h2>
+                    </div>
+                    <div class="card-content">
+                        <form class="payment-form">
+                            <div class="form-group">
+                                <label for="payment-amount">Amount</label>
+                                <input type="number" id="payment-amount" name="payment-amount" placeholder="Enter amount" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="payment-method">Payment Method</label>
+                                <select id="payment-method" name="payment-method" required>
+                                    <option value="">Select a payment method</option>
+                                    <option value="bank-account">Bank Account</option>
+                                    <option value="credit-card">Credit Card</option>
+                                    <option value="debit-card">Debit Card</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="submit-button">Make Payment</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Support</h2>
+                    </div>
+                    <div class="card-content">
+                        <p>Need help with your taxes?</p>
+                        <a href="#" class="action-button">Chat with a Tax Expert</a>
+                        <p>Or call us at 1-800-TAX-HELP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

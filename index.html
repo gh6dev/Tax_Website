@@ -3,129 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Management System</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Tax Customer Portal - Grandhouse Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background-color: #f9fafb;
+            --card-background: white;
+            --border-color: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        body{
+            background-color: var(--background-color) ;
+        }
+        
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .auth-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .cta-button.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cta-button.primary:hover {
+            background-color: #004ab8;
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: rgba(0, 82, 204, 0.05);
+        }
+        
+        .banner {
+            background: var(--background-color);
+            text-align: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .banner strong {
+            font-weight: 600;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background-color: var(--background-color);
+            
+        }
+        .feature-card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+        }
+        
+        .pricing-info {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .footer {
+            background-color: var(--card-background);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Sidebar -->
-        <nav class="sidebar">
-            <div class="logo">TaxManager</div>
-            <ul class="nav-links">
-                <li class="active"><a href="index.html"><i class="icon">📊</i>Dashboard</a></li>
-                <li><a href="index3.html"><i class="icon">👥</i>Taxpayers</a></li>
-                <li><a href="#"><i class="icon">📝</i>Returns</a></li>
-                <li><a href="#"><i class="icon">📁</i>Documents</a></li>
-                <li><a href="#"><i class="icon">⚙️</i>Settings</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <header>
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search taxpayers...">
-                    <button class="search-btn">🔍</button>
-                </div>
-                <button class="add-new-btn" onclick="showAddForm()">+ Add New Taxpayer</button>
-            </header>
-
-            <div class="dashboard-grid">
-                <div class="card stats">
-                    <h3>Quick Stats</h3>
-                    <div class="stat-items">
-                        <div class="stat-item">
-                            <span class="stat-number">1,234</span>
-                            <span class="stat-label">Total Taxpayers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">856</span>
-                            <span class="stat-label">Filed Returns</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">378</span>
-                            <span class="stat-label">Pending</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card taxpayers">
-                    <h3>Pending Taxpayers</h3>
-                    <div class="taxpayer-item">
-                        <div class="taxpayer-info">
-                            <div class="taxpayer-name">Felix</div>
-                            <div class="taxpayer-details">
-                                NIN: XXX-XX-5677 | Status: Pending
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card taxpayers">
-                    <h3>Recent Taxpayers</h3>
-                    <div id="taxpayersList" class="taxpayers-list">
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Right Sidebar -->
-        <aside class="quick-actions">
-            <h2>Quick Actions</h2>
-            <div class="action-buttons">
-                <button onclick="showAddForm()">Add New Taxpayer</button>
-                <button onclick="generateReport()">Generate Report</button>
-                <button onclick="showDeadlines()">View Deadlines</button>
-            </div>
-        </aside>
-    </div>
-
-    <!-- Add Taxpayer Modal -->
-    <div id="addTaxpayerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeAddForm()">&times;</span>
-            <h2>Add New Taxpayer</h2>
-            <form id="taxpayerForm">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="nin">NIN</label>
-                    <input type="text" id="nin" required pattern="\d{3}-\d{2}-\d{4}" placeholder="XXX-XX-XXXX">
-                </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea id="address" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit">Add Taxpayer</button>
-                    <button type="button" onclick="closeAddForm()">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Taxpayer Profile Modal -->
-    <div id="profileModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeProfile()">&times;</span>
-            <div id="profileContent">
-                <!-- Populated by JavaScript -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Tax Portal</div>
+            <nav class="nav-links">
+                <a href="#">Support</a>
+                <a href="#">Tax Resources</a>
+            </nav>
+            <div class="auth-links">
+                <a href="login.html" class="cta-button secondary">Log In</a>
+                <a href="signup.html" class="cta-button primary">Sign Up</a>
             </div>
         </div>
+    </header>
+
+    <div class="banner">
+        Tax Filing system delivered by <strong>Grandhouse Analytics</strong>
     </div>
 
-    <script src="script.js"></script>
+    <main>
+        <section class="hero">
+            <h1>Tax Filing and Revenue Management Portal</h1>
+            <p>File your taxes in minutes and manage your account all in one place.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-button primary" style="background-color: white; color: var(--primary-color);">Get Started</a>
+                <a href="#features" class="cta-button secondary" style="border-color: white; color: white;">Learn More</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">Easy Tax Filing</h3>
+                <p class="feature-description">Complete your tax return with our guided step-by-step process.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Secure Payments</h3>
+                <p class="feature-description">Make secure tax payments and manage your transactions with ease.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Financial Dashboard</h3>
+                <p class="feature-description">Get a clear view of your tax history and filing status.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3 class="feature-title">Document Management</h3>
+                <p class="feature-description">Securely store and access tax documents anytime, anywhere.</p>
+            </div>
+        </section>
+
+        <div class="pricing-info">
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Grandhouse Analytics Tax Portal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for the "Learn More" button
+        document.querySelector('a[href="#features"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#features').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
